@@ -3,5 +3,24 @@
         padding: 20px;
 }
 .post_image{
-        
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+}
+.username_caption{
+        font-size: 22px;
+        font-weight: 400;
+}
+.post_profile{
+        height: auto;
+}
+.post_top_block{
+        display: flex;
+        align-items: flex-start;
+}
+.post_username{
+        font-size: 25px;
+        line-height: 1.4;
+        font-weight: 700;
+        color: black;
 }
