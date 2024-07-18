@@ -1,6 +1,7 @@
 .post_block{
         background-color: #FAFAFA;
-        padding: 20px;
+        padding: 15px 20px;  
+        border-top: 1px solid lightgrey;
 }
 .post_image{
         object-fit: contain;
@@ -8,7 +9,7 @@
         height: 100%;
 }
 .username_caption{
-        font-size: 22px;
+        font-size: 15px;
         font-weight: 400;
 }
 .post_profile{
@@ -17,15 +18,18 @@
 }
 .post_top_block{
         display: flex;
-        align-items: flex-start;
+        align-items: center;
 }
 .post_username{
-        font-size: 25px;
+        font-size: 17px;
         line-height: 1.4;
         font-weight: 700;
         color: black;
         margin-left: 15px;
 }
 .post_top_block{
-        padding-bottom: 20px;
+        padding-bottom: 15px;
+}
+.username_caption_block{
+        padding: 20px 0;
 }

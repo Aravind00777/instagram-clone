@@ -12,6 +12,8 @@ function App() {
       <Container>
         <InnerContainer> <Header /></InnerContainer>
         <Post />
+        <Post />
+        <Post />
       </Container>
     </div>
   );
