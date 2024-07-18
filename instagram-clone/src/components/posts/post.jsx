@@ -7,7 +7,7 @@ export default function Post({username , caption , imageurl}) {
       <div className={styles.post_top_block}>
         <Avatar
           className={styles.post_avatar}
-          alt="Remy Sharp"
+          alt={username}
           src="/static/images/avatar/1.jpg"
         />
         <h3 className={styles.post_username}>{username}</h3>
