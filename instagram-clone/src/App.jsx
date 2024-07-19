@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Header from "./components/Header/Header";
-import Post from "./components/posts/Post";
+import Post from "./components/posts/post";
 import Container from "./components/Container";
-import styles from "./App.module.css"; // Assuming the CSS module is named correctly
+// import modal from "./components/form/Modalform";
+import styles from "./App.module.css";  
 import InnerContainer from "./components/InnerContainer";
 import { db } from "./assets/js/firebase";
-import { collection, onSnapshot } from "firebase/firestore"; // Import Firestore methods
+import { collection, onSnapshot } from "firebase/firestore";  
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -33,6 +34,7 @@ function App() {
             imageurl={post.imageurl}
           />
         ))}
+       {/* <Modalform/> */}
       </Container>
     </div>
   );
