@@ -34,7 +34,7 @@ function App() {
             imageurl={post.imageurl}
           />
         ))}
-       {/* <Modalform/> */}
+       {/* <Modalform/>z */}
       </Container>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState  } from "react";
+import { Typography } from "@mui/material";
 const style = {
   position: "absolute",
   top: "50%",
