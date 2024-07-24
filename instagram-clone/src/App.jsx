@@ -27,6 +27,9 @@ function App() {
         <InnerContainer>
           <Header />
         </InnerContainer>
+        <InnerContainer>
+        <Modalform/>
+        </InnerContainer>
         {posts.map((post) => (
           <Post
             key={post.id}
@@ -35,7 +38,7 @@ function App() {
             imageurl={post.imageurl}
           />
         ))}
-       <Modalform/>
+       
       </Container>
     </div>
   );
