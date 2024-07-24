@@ -1,5 +1,8 @@
-import { useState  } from "react";
-import { Typography } from "@mui/material";
+import { useState } from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
+import styles from "../form/form.module.css";
 const style = {
   position: "absolute",
   top: "50%",
@@ -11,24 +14,23 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-const [open, setOpen] = useState(false);
-const handleOpen = () => setOpen(true);
-const handleClose = () => setOpen(false);
 
 export default function Modalform() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <div>
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <Typography
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-          ></Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <div className={styles.modal__head}>
+            <h2>new modal head </h2>
+            <button onClick={handleClose}>close</button>
+          </div>
+          <div className={styles.modal__body}>
+            <input type="text" />
+          </div>
         </Box>
       </Modal>
     </div>
