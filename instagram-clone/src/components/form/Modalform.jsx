@@ -3,6 +3,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import styles from "../form/form.module.css";
+import Input from '@mui/material/Input';
+import logos from '../../assets/images/instagram-text-icon.svg'
 const style = {
   position: "absolute",
   top: "50%",
@@ -25,11 +27,13 @@ export default function Modalform() {
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <div className={styles.modal__head}>
-            <h2>new modal head </h2>
-            <button onClick={handleClose}>close</button>
+            <img className={styles.logo} src={logos} alt="logo"/>
           </div>
           <div className={styles.modal__body}>
-            <input type="text" />
+          <Input placeholder="username"/>
+          <Input placeholder="email"/>
+          <Input placeholder="password"/>
+          <Button>sign-in</Button>
           </div>
         </Box>
       </Modal>
