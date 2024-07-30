@@ -38,7 +38,6 @@ function App() {
             imageurl={post.imageurl}
           />
         ))}
-       
       </Container>
     </div>
   );
