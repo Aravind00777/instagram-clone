@@ -6,7 +6,7 @@ import styles from "../form/form.module.css";
 import Input from "@mui/material/Input";
 import logos from "../../assets/images/instagram-text-icon.svg";
 import { auth } from "../../assets/js/firebase.js";
-import { createUserWithEmailAndPassword, updateProfile   } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const style = {
   position: "absolute",
@@ -20,21 +20,27 @@ const style = {
   p: 4,
 };
 
-
-export default function Modalform({username, email ,password , setEmail ,setPassword ,setUsername}) {
+export default function Modalform({
+  username,
+  email,
+  password,
+  setEmail,
+  setPassword,
+  setUsername,
+  user,
+}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
 
   const signup = (event) => {
     event.preventDefault();
-    
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         handleClose();
         return updateProfile(userCredential.user, {
-          displayName: username
+          displayName: username,
         });
       })
       .catch((error) => {
@@ -43,7 +49,12 @@ export default function Modalform({username, email ,password , setEmail ,setPass
   };
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      {user ? (
+        <Button onClick={() => auth.signOut()}>Logout</Button>
+      ) : (
+        <Button onClick={handleOpen}>sign-up</Button>
+      )}
+
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <div className={styles.modal__head}>
