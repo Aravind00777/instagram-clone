@@ -6,7 +6,7 @@ import styles from "../form/form.module.css";
 import Input from "@mui/material/Input";
 import logos from "../../assets/images/instagram-text-icon.svg";
 import { auth } from "../../assets/js/firebase.js";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile   } from "firebase/auth";
 
 const style = {
   position: "absolute",
@@ -21,24 +21,23 @@ const style = {
 };
 
 
-export default function Modalform() {
+export default function Modalform({username, email ,password , setEmail ,setPassword ,setUsername}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  
 
   const signup = (event) => {
     event.preventDefault();
-    console.log("Signup with email:", email, "and password:", password);
+    
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log("User signed up:", userCredential.user);
         handleClose();
+        return updateProfile(userCredential.user, {
+          displayName: username
+        });
       })
       .catch((error) => {
-        console.error("Error signing up:", error.message);
         alert(error.message);
       });
   };
