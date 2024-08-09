@@ -7,6 +7,7 @@ import Input from "@mui/material/Input";
 import logos from "../../assets/images/instagram-text-icon.svg";
 import { auth } from "../../assets/js/firebase.js";
 import { createUserWithEmailAndPassword, updateProfile ,signInWithEmailAndPassword } from "firebase/auth";
+import Signin from "../signinmodal/Signin.jsx";
 
 const style = {
   position: "absolute",
@@ -64,7 +65,7 @@ export default function Modalform({
       {user ? (
         <Button onClick={() => auth.signOut()}>Logout</Button>
       ) : (
-        <div className={style.signin__wrapper}>
+        <div className={styles.signin__wrapper}>
         <Button onClick={handleOpen}>sign-up</Button>
         <Button onClick={signinhandleOpen}>sign-in</Button>
         </div>
@@ -100,32 +101,7 @@ export default function Modalform({
           </form>
         </Box>
       </Modal>
-
-      <Modal open={opensignin} onClose={signinhandleClose}>
-        <Box sx={style}>
-          <div className={styles.modal__head}>
-            <img className={styles.logo} src={logos} alt="logo" />
-          </div>
-          <form onSubmit={signin} className={styles.modal__body}>
-            
-            <Input
-              placeholder="email"
-              value={email}
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              placeholder="password"
-              value={password}
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <Button type="submit" onClick={signin}>
-              sign-in
-            </Button>
-          </form>
-        </Box>
-      </Modal>
+      <Signin signin={signin} opensignin={opensignin} signinhandleOpen={signinhandleOpen} signinhandleClose={signinhandleClose} style={style}/>
     </div>
   );
 }

@@ -6,15 +6,16 @@ import Input from "@mui/material/Input";
 import logos from "../../assets/images/instagram-text-icon.svg";
 
 
-export default function Signin() {
+export default function Signin({signinhandleClose, opensignin, signin, style, setEmail, setPassword, email, password}) {
   return (
     <div>
-      <Modal open={open} onClose={handleClose}>
+       <Modal open={opensignin} onClose={signinhandleClose}>
         <Box sx={style}>
           <div className={styles.modal__head}>
             <img className={styles.logo} src={logos} alt="logo" />
           </div>
-          <form onSubmit={signup} className={styles.modal__body}>
+          <form onSubmit={signin} className={styles.modal__body}>
+            
             <Input
               placeholder="email"
               value={email}
