@@ -44,9 +44,7 @@ function App() {
       <Container>
         <InnerContainer>
           <Header />
-        </InnerContainer>
-        <InnerContainer>
-        <Modalform username={username} email={email} password={password} setEmail={setEmail} setPassword={setPassword} setUsername={setUsername} user={user}/>
+          <Modalform username={username} email={email} password={password} setEmail={setEmail} setPassword={setPassword} setUsername={setUsername} user={user}/>
         </InnerContainer>
         {posts.map((post) => (
           <Post

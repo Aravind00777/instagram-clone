@@ -63,7 +63,9 @@ export default function Modalform({
   return (
     <div>
       {user ? (
-        <Button onClick={() => auth.signOut()}>Logout</Button>
+        <div className={styles.logout__btn}>
+        <Button  onClick={() => auth.signOut()}>Logout</Button>
+        </div>
       ) : (
         <div className={styles.signin__wrapper}>
         <Button onClick={handleOpen}>sign-up</Button>
