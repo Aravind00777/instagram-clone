@@ -6,7 +6,7 @@ import styles from "../form/form.module.css";
 import Input from "@mui/material/Input";
 import logos from "../../assets/images/instagram-text-icon.svg";
 import { auth } from "../../assets/js/firebase.js";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile ,signInWithEmailAndPassword } from "firebase/auth";
 
 const style = {
   position: "absolute",
@@ -30,8 +30,11 @@ export default function Modalform({
   user,
 }) {
   const [open, setOpen] = useState(false);
+  const [opensignin, setOpensignin] = useState();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const signinhandleOpen = () => setOpensignin(true);
+  const signinhandleClose = () => setOpensignin(false);
 
   const signup = (event) => {
     event.preventDefault();
@@ -46,13 +49,25 @@ export default function Modalform({
       .catch((error) => {
         alert(error.message);
       });
+      signinhandleClose();
+  };
+
+  const signin = (event) =>{
+    event.preventDefault();
+    signInWithEmailAndPassword(auth ,email, password)
+    .catch((error) => alert(error.message));
+    setOpen(false);
+    
   };
   return (
     <div>
       {user ? (
         <Button onClick={() => auth.signOut()}>Logout</Button>
       ) : (
+        <div className={style.signin__wrapper}>
         <Button onClick={handleOpen}>sign-up</Button>
+        <Button onClick={signinhandleOpen}>sign-in</Button>
+        </div>
       )}
 
       <Modal open={open} onClose={handleClose}>
@@ -80,6 +95,32 @@ export default function Modalform({
               onChange={(e) => setPassword(e.target.value)}
             />
             <Button type="submit" onClick={signup}>
+              sign-up
+            </Button>
+          </form>
+        </Box>
+      </Modal>
+
+      <Modal open={opensignin} onClose={signinhandleClose}>
+        <Box sx={style}>
+          <div className={styles.modal__head}>
+            <img className={styles.logo} src={logos} alt="logo" />
+          </div>
+          <form onSubmit={signin} className={styles.modal__body}>
+            
+            <Input
+              placeholder="email"
+              value={email}
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              placeholder="password"
+              value={password}
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button type="submit" onClick={signin}>
               sign-in
             </Button>
           </form>
