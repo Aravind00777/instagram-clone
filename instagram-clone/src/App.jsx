@@ -4,6 +4,7 @@ import Post from "./components/posts/post";
 import Container from "./components/Container";
 import Modalform from "./components/form/Modalform";
 import styles from "./App.module.css";  
+import ImageUpload from "./components/imageupload/ImageUpload";
 import InnerContainer from "./components/InnerContainer";
 import { db ,auth } from "./assets/js/firebase";
 import { collection, onSnapshot } from "firebase/firestore";  
@@ -54,6 +55,12 @@ function App() {
             imageurl={post.imageurl}
           />
         ))}
+        {user?.displayName ? (
+           <ImageUpload username={user.displayName}/>
+        ): (
+            <h3>sorry you need to login to upload...</h3>
+        )}
+       
       </Container>
     </div>
   );
